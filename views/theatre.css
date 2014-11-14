@@ -1,0 +1,494 @@
+/* global */
+.theatre {
+	display: block;
+	overflow: hidden;
+	position: relative;
+	list-style: none;
+	padding: 0px;
+}
+
+.theatre-actor {
+	margin: 0px;
+}
+
+/* Orbit */
+.theatre-orbit .theatre-actor {
+	position: absolute;
+}
+
+/* 3d */
+.theatre-3d .theatre-actor {
+	position: absolute;
+	-moz-box-shadow: 10px -10px 15px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow: 10px -10px 15px rgba(0, 0, 0, 0.4);
+	-o-box-shadow: 10px -10px 15px rgba(0, 0, 0, 0.4);
+	box-shadow: 10px -10px 15px rgba(0, 0, 0, 0.4);
+	border: 2px solid white;
+}
+
+/* horizontal, vertical */
+.theatre-vertical .theatre-actor, .theatre-horizontal .theatre-actor {
+	top: 0px;
+	position: absolute;
+}
+
+/* fade */
+.theatre-fade,
+.theatre-show,
+.theatre-slide {
+	overflow: visible !important;
+}
+
+.theatre-fade .theatre-actor,
+.theatre-show .theatre-actor,
+.theatre-slide .theatre-actor {
+	display: block;
+}
+
+/* Controls */
+.theatre-control {
+	position: absolute;
+	-x-background-color: black;
+	opacity: 0.8;
+	z-index: 1000;
+	cursor: pointer;
+	-moz-user-select: none;
+}
+.theatre-control:hover {
+	opacity: 1;
+}
+.theatre-control-horizontal-next {
+	cursor: e-resize;
+}
+.theatre-control-horizontal-prev {
+	cursor: w-resize;
+}
+.theatre-control-vertical-next {
+	cursor: n-resize;
+}
+.theatre-control-vertical-prev {
+	cursor: s-resize;
+}
+.theatre-control span {
+	background-image: url('theatre-controls.png');
+	background-repeat: no-repeat;
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -20px;
+	margin-top: -20px;
+	width: 30px;
+	height: 30px;
+}
+/* Hover */
+.theatre-next span {
+	background-position: -97px 0px;
+}
+.theatre-prev span {
+	background-position: -67px 0px;
+}
+.theatre-control-vertical-next span {
+	background-position: -32px -29px;
+}
+.theatre-control-vertical-prev span {
+	background-position: 0px -29px;
+}
+.theatre-stop span {
+	background-position: -157px 6px;
+}
+.theatre-play span {
+	background-position: -128px 6px;
+}
+/*
+.theatre-next span {
+	background-position: -97px -37px;
+}
+.theatre-prev span {
+	background-position: -67px -37px;
+}
+.theatre-control-vertical-next span {
+	background-position: -32px 8px;
+}
+.theatre-control-vertical-prev span {
+	background-position: 0px 8px;
+}
+.theatre-play span {
+	background-position: -128px -32px;
+}
+.theatre-stop span {
+	background-position: -157px -32px;
+}
+*/
+/* Horizontal */
+.theatre-control-horizontal-next, .theatre-control-horizontal-prev {
+	top: 0px;
+	width: 30px;
+	height: 100%;
+}
+.theatre-control-horizontal-next {
+	right: 0px;
+}
+.theatre-control-horizontal-prev {
+	left: 0px;
+}
+.theatre-control-horizontal-play, .theatre-control-horizontal-stop {
+	bottom: 0px;
+}
+.theatre-control-horizontal-play {
+	right: 50%;
+	width: 30px;
+	height: 30px;
+}
+.theatre-control-horizontal-stop {
+	left: 50%;
+	width: 30px;
+	height: 30px;
+}
+/* Vertical */
+.theatre-control-vertical-next, .theatre-control-vertical-prev {
+	right: 0px;
+	width: 100%;
+	height: 30px;
+}
+.theatre-control-vertical-next {
+	top: 0px;
+}
+.theatre-control-vertical-prev {
+	bottom: 0px;
+}
+.theatre-control-vertical-play, .theatre-control-vertical-stop {
+	display: none !important;
+}
+
+/* css3:slide */
+.theatre-css3-slide {
+	overflow: visible !important;
+}
+.theatre-css3-slide .theatre-actor {
+	display: block;
+	position: absolute;
+	z-index: 0;
+	left: 50%;
+	opacity: 0;
+
+	transform: scale(0.1) translate(-50%,0);
+	-moz-transform: scale(0.1) translate(-50%,0);
+	-webkit-transform: scale(0.1) translate(-50%,0);
+	-o-transform: scale(0.1) translate(-50%,0);
+	-ms-transform: scale(0.1) translate(-50%,0);
+
+	transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-webkit-transition: all 1s ease-in-out;
+	-ms-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+}
+.theatre-css3-slide .central {
+	display: block;
+	z-index: 100;
+	opacity: 1;
+
+	transform: translate(-50%,0%);
+	-moz-transform: translate(-50%,0%);
+	-webkit-transform: translate(-50%,0%);
+	-o-transform: translate(-50%,0%);
+	-ms-transform: translate(-50%,0%);
+
+	-moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4) !important;
+	-webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4) !important;
+	-o-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4) !important;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4) !important;
+}
+
+.theatre-css3-slide .right1,
+.theatre-css3-slide .left1 {
+	display: block;
+	z-index: 5;
+	opacity: 1;
+}
+.theatre-css3-slide .right1 {
+	left: 100%;
+	transform: scale(0.25, 0.7) translate(-250%,0) rotate(0deg) skewY(6deg);
+	-moz-transform: scale(0.25, 0.7) translate(-250%,0) rotate(0deg) skewY(6deg);
+	-webkit-transform: scale(0.25, 0.7) translate(-250%,0) rotate(0deg) skewY(6deg);
+	-o-transform: scale(0.25, 0.7) translate(-250%,0) rotate(0deg) skewY(6deg);
+	-ms-transform: scale(0.25, 0.7) translate(-250%,0) rotate(0deg) skewY(6deg);
+
+	-moz-box-shadow: 50px -5px 15px rgba(0, 0, 0, 0.4) !important;
+	-webkit-box-shadow: 50px -5px 15px rgba(0, 0, 0, 0.4) !important;
+	-o-box-shadow: 50px -5px 15px rgba(0, 0, 0, 0.4) !important;
+	box-shadow: 50px -5px 15px rgba(0, 0, 0, 0.4) !important;
+}
+.theatre-css3-slide .left1 {
+	left: 0px;
+	transform: scale(0.25, 0.7) translate(-150%,0) rotate(0deg) skewY(-6deg);
+	-moz-transform: scale(0.25, 0.7) translate(-150%,0) rotate(0deg) skewY(-6deg);
+	-webkit-transform: scale(0.25, 0.7) translate(-150%,0) rotate(0deg) skewY(-6deg);
+	-o-transform: scale(0.25, 0.7) translate(-150%,0) rotate(0deg) skewY(-6deg);
+	-ms-transform: scale(0.25, 0.7) translate(-150%,0) rotate(0deg) skewY(-6deg);
+
+	-moz-box-shadow: -50px -5px 15px rgba(0, 0, 0, 0.4) !important;
+	-webkit-box-shadow: -50px -5px 15px rgba(0, 0, 0, 0.4) !important;
+	-o-box-shadow: -50px -5px 15px rgba(0, 0, 0, 0.4) !important;
+	box-shadow: -50px -5px 15px rgba(0, 0, 0, 0.4) !important;
+}
+
+.theatre-css3-slide .right2,
+.theatre-css3-slide .left2 {
+	display: block;
+	z-index: 3;
+	opacity: 1;
+}
+.theatre-css3-slide .right2 {
+	left: 60%;
+	transform: scale(0.4, 0.6) translate(-125%,0) skewY(3deg);
+	-moz-transform: scale(0.4, 0.6) translate(-125%,0) skewY(3deg);
+	-webkit-transform: scale(0.4, 0.6) translate(-125%,0) skewY(3deg);
+	-o-transform: scale(0.4, 0.6) translate(-125%,0) skewY(3deg);
+	-ms-transform: scale(0.4, 0.6) translate(-125%,0) skewY(3deg);
+}
+.theatre-css3-slide .left2 {
+	left: 40%;
+	transform: scale(0.4, 0.6) translate(-125%,0) skewY(-3deg);
+	-moz-transform: scale(0.4, 0.6) translate(-125%,0) skewY(-3deg);
+	-webkit-transform: scale(0.4, 0.6) translate(-125%,0) skewY(-3deg);
+	-o-transform: scale(0.4, 0.6) translate(-125%,0) skewY(-3deg);
+	-ms-transform: scale(0.4, 0.6) translate(-125%,0) skewY(-3deg);
+}
+
+
+/* css3:stack */
+.theatre-css3-stack {
+	overflow: visible !important;
+}
+.theatre-css3-stack .theatre-actor {
+	position: absolute;
+	display: none;
+
+	transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-webkit-transition: all 1s ease-in-out;
+	-ms-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+}
+.theatre-css3-stack .central {
+	display: block;
+	left: 50%;
+	z-index: 100;
+
+	transform: translate(-50%,0%);
+	-moz-transform: translate(-50%,0%);
+	-webkit-transform: translate(-50%,0%);
+	-o-transform: translate(-50%,0%);
+	-ms-transform: translate(-50%,0%);
+}
+.theatre-css3-stack .left1 {
+	display: block;
+	z-index: 99;
+	left: 0%;
+	transform: scale(0.6) rotate(20deg);
+	-moz-transform: scale(0.6) rotate(20deg);
+	-webkit-transform: scale(0.6) rotate(20deg);
+	-o-transform: scale(0.6) rotate(20deg);
+	-ms-transform: scale(0.6) rotate(20deg);
+}
+
+.theatre-css3-stack .left2 {
+	display: block;
+	z-index: 98;
+	left: 0%;
+	transform: scale(0.6) rotate(-30deg);
+	-moz-transform: scale(0.6) rotate(-30deg);
+	-webkit-transform: scale(0.6) rotate(-30deg);
+	-o-transform: scale(0.6) rotate(-30deg);
+	-ms-transform: scale(0.6) rotate(-30deg);
+}
+
+.theatre-css3-stack .left3 {
+	display: block;
+	z-index: 90;
+	left: 0%;
+	top: 0%;
+	transform: scale(0.6) rotate(-8deg);
+	-moz-transform: scale(0.6) rotate(-8deg);
+	-webkit-transform: scale(0.6) rotate(-8deg);
+	-o-transform: scale(0.6) rotate(-8deg);
+	-ms-transform: scale(0.6) rotate(-8deg);
+}
+.theatre-css3-stack .right1 {
+	display: block;
+	z-index: 99;
+	right: 0%;
+	transform: scale(0.6) rotate(-20deg);
+	-moz-transform: scale(0.6) rotate(-20deg);
+	-webkit-transform:  scale(0.6) rotate(-20deg);
+	-o-transform: scale(0.6) rotate(-20deg);
+	-ms-transform: scale(0.6) rotate(-20deg);
+}
+
+.theatre-css3-stack .right2 {
+	display: block;
+	z-index: 98;
+	right: 0%;
+	transform: scale(0.6) rotate(+30deg);
+	-moz-transform: scale(0.6) rotate(+30deg);
+	-webkit-transform: scale(0.6) rotate(+30deg);
+	-o-transform: scale(0.6) rotate(+30deg);
+	-ms-transform: scale(0.6) rotate(+30deg);
+}
+
+.theatre-css3-stack .right3 {
+	display: block;
+	z-index: 90;
+	right: 0%;
+	top: 0%;
+	transform: scale(0.6) rotate(+8deg);
+	-moz-transform: scale(0.6) rotate(+8deg);
+	-webkit-transform: scale(0.6) rotate(+8deg);
+	-o-transform: scale(0.6) rotate(+8deg);
+	-ms-transform: scale(0.6) rotate(+8deg);
+}
+
+/* CSS3:Circle */
+.theatre-css3-circle {
+	overflow: visible !important;
+}
+.theatre-css3-circle .theatre-actor {
+	position: absolute;
+	display: none;
+
+	transform-origin: center top;
+	-ms-transform-origin: center top;
+	-webkit-transform-origin: center top;
+	-moz-transform-origin: center top;
+	-o-transform-origin: center top;
+
+	transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-webkit-transition: all 1s ease-in-out;
+	-ms-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+}
+.theatre-css3-circle .central {
+	display: block;
+	left: 0%;
+	top: 0%;
+	z-index: 100;
+	transform: scale(1) rotate(0deg);
+	-moz-transform: scale(1) rotate(0deg);
+	-webkit-transform: scale(1) rotate(0deg);
+	-o-transform: scale(1) rotate(0deg);
+	-ms-transform: scale(1) rotate(0deg);
+}
+
+.theatre-css3-circle .left1,
+.theatre-css3-circle .left2,
+.theatre-css3-circle .left3,
+.theatre-css3-circle .left4,
+.theatre-css3-circle .left5,
+.theatre-css3-circle .right1,
+.theatre-css3-circle .right2,
+.theatre-css3-circle .right3,
+.theatre-css3-circle .right4,
+.theatre-css3-circle .right5,
+.theatre-css3-circle .right6 {
+	display: block;
+	left: 50%;
+	top: 50%;
+}
+
+.theatre-css3-circle .left1 {
+	z-index: 10;
+	transform: scale(0.5) rotate(20deg);
+	-moz-transform: scale(0.5) rotate(20deg);
+	-webkit-transform: scale(0.5) rotate(20deg);
+	-o-transform: scale(0.5) rotate(20deg);
+	-ms-transform: scale(0.5) rotate(20deg);
+}
+
+.theatre-css3-circle .left2 {
+	z-index: 5;
+	transform: scale(0.5) rotate(60deg);
+	-moz-transform: scale(0.5) rotate(60deg);
+	-webkit-transform: scale(0.5) rotate(60deg);
+	-o-transform: scale(0.5) rotate(60deg);
+	-ms-transform: scale(0.5) rotate(60deg);
+}
+.theatre-css3-circle .left3 {
+	z-index: 4;
+	transform: scale(0.5) rotate(100deg);
+	-moz-transform: scale(0.5) rotate(100deg);
+	-webkit-transform: scale(0.5) rotate(100deg);
+	-o-transform: scale(0.5) rotate(100deg);
+	-ms-transform: scale(0.5) rotate(100deg);
+}
+.theatre-css3-circle .left4 {
+	z-index: 3;
+	transform: scale(0.5) rotate(140deg);
+	-moz-transform: scale(0.5) rotate(140deg);
+	-webkit-transform: scale(0.5) rotate(140deg);
+	-o-transform: scale(0.5) rotate(140deg);
+	-ms-transform: scale(0.5) rotate(140deg);
+}
+.theatre-css3-circle .left5 {
+	z-index: 2;
+	opacity: 0;
+	transform: scale(0.5) rotate(180deg);
+	-moz-transform: scale(0.5) rotate(180deg);
+	-webkit-transform: scale(0.5) rotate(180deg);
+	-o-transform: scale(0.5) rotate(180deg);
+	-ms-transform: scale(0.5) rotate(180deg);
+}
+.theatre-css3-circle .right1 {
+	z-index: 10;
+	transform: scale(0.5) rotate(-20deg);
+	-moz-transform: scale(0.5) rotate(-20deg);
+	-webkit-transform: scale(0.5) rotate(-20deg);
+	-o-transform: scale(0.5) rotate(-20deg);
+	-ms-transform: scale(0.5) rotate(-20deg);
+}
+
+.theatre-css3-circle .right2 {
+	z-index: 9;
+	transform: scale(0.5) rotate(-60deg);
+	-moz-transform: scale(0.5) rotate(-60deg);
+	-webkit-transform: scale(0.5) rotate(-60deg);
+	-o-transform: scale(0.5) rotate(-60deg);
+	-ms-transform: scale(0.5) rotate(-60deg);
+}
+.theatre-css3-circle .right3 {
+	z-index: 8;
+	transform: scale(0.5) rotate(-100deg);
+	-moz-transform: scale(0.5) rotate(-100deg);
+	-webkit-transform: scale(0.5) rotate(-100deg);
+	-o-transform: scale(0.5) rotate(-100deg);
+	-ms-transform: scale(0.5) rotate(-100deg);
+}
+.theatre-css3-circle .right4 {
+	z-index: 7;
+	transform: scale(0.5) rotate(-140deg);
+	-moz-transform: scale(0.5) rotate(-140deg);
+	-webkit-transform: scale(0.5) rotate(-140deg);
+	-o-transform: scale(0.5) rotate(-140deg);
+	-ms-transform: scale(0.5) rotate(-140deg);
+}
+.theatre-css3-circle .right5 {
+	z-index: 6;
+	transform: scale(0.5) rotate(-180deg);
+	-moz-transform: scale(0.5) rotate(-180deg);
+	-webkit-transform: scale(0.5) rotate(-180deg);
+	-o-transform: scale(0.5) rotate(-180deg);
+	-ms-transform: scale(0.5) rotate(-180deg);
+}
+.theatre-css3-circle .right6 {
+	z-index: 5;
+	opacity: 0;
+	transform: scale(0.5) rotate(-220deg);
+	-moz-transform: scale(0.5) rotate(-220deg);
+	-webkit-transform: scale(0.5) rotate(-220deg);
+	-o-transform: scale(0.5) rotate(-220deg);
+	-ms-transform: scale(0.5) rotate(-220deg);
+}
+
+
