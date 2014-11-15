@@ -1,3 +1,17 @@
+var isForeground = true;
+
+$(window).bind("blur", function() {
+  isForeground = false;
+  	console.log('blur:isForeground',isForeground);
+
+});
+
+$(window).bind("focus", function() {
+  isForeground = true;
+  	console.log('focus:isForeground',isForeground);
+
+});
+
 $(window).load(function() {
     var port = chrome.extension.connect({name: "backgroud"});
 
@@ -27,6 +41,7 @@ $(window).load(function() {
     }
 
 	port.onMessage.addListener(function(msg) {
+		console.log(msg,isForeground);
 		console.log(msg);
         if(msg.type == "accept") {
             console.log(msg.data);
@@ -39,7 +54,8 @@ $(window).load(function() {
             });
         }
         else {
-            directions(Number(msg.id));
+        	if(isForeground)
+            	directions(Number(msg.id));
         }
 	});
 
@@ -73,4 +89,3 @@ $(window).load(function() {
             ]
         });
 });
-

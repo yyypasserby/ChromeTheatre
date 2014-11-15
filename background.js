@@ -30,9 +30,11 @@ chrome.extension.onConnect.addListener(function(port) {
 	port.onMessage.addListener(function(msg) {
 		if(msg.type == 'new'){
 
-			var clientId = port.portId_;
+			var clientId = port.sender.id;
 
-			console.log('port : a new client ' + clientId);
+			console.log('port : a new client port' + port);
+
+			console.log('port : a new client id ' + clientId);
             console.log(video_list_str);
 			port.postMessage({type:'accept', data: video_list_str});
 
@@ -40,6 +42,7 @@ chrome.extension.onConnect.addListener(function(port) {
 			console.log(client.ports);
 
 		}
+
         console.log(msg);
         if(msg.type == 'video_new') {
             console.log(msg.data);
@@ -57,7 +60,7 @@ chrome.extension.onConnect.addListener(function(port) {
 		}
 	});
 	port.onDisconnect.addListener(function(){
-		delete client.ports[port.portId_];
+		delete client.ports[port.sender.id];
 		console.log(client.ports);
 	});
 });
@@ -72,9 +75,9 @@ var Opt = function (ms) {
 }
 
 var sendNotice = function(id, ttl, ms) {
-	chrome.notifications.create(id, Opt(ms), function (id) {
-	setTimeout(clear,1000*ttl,id);
-});
+		chrome.notifications.create(id, Opt(ms), function (id) {
+		setTimeout(clear,1000*ttl,id);
+	});
 }
 
 var clear = function (id) {
