@@ -27,6 +27,7 @@ function youkuInterpreter() {
         if(typeof link !== 'undefined') {
             //console.log($(this).attr("href"));
             //console.log($(this).attr("title"))
+            try {
             var attrs = {};
             var href = $(link).attr("href");
             if(href === null || typeof href === 'undefined') {
@@ -51,6 +52,10 @@ function youkuInterpreter() {
             }
             attrs.thumbnail = thumbnail;
             video_list.push(attrs);
+            }
+            catch(err) {
+                return;
+            }
         }
     });
 

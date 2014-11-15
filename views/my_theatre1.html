@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="../jquery.min.js" type="text/javascript" ></script>
+<link type="text/css" rel="stylesheet" href="./theatre.css" />
+<link type="text/css" rel="stylesheet" href="./my_theatre.css" />
+<link type="text/css" rel="stylesheet" href="./normalize.css" />
+<script type="text/javascript" src="./jquery.theatre.min.js"></script>
+<script type="text/javascript" src="./my_theatre.js"></script>
+<script type="text/javascript" src="./angular.js"></script>
+<script type="text/javascript" src="./my_theatre_data.js"></script>
+</head>
+
+<body ng-app="TheatreApp">
+<div ng-controller="TheatrePresentCtrl">
+  <button id="next-button">
+    next 
+  </button>
+  <div class="theatre-global-back" style="background-image:url(http://www.hackshanghai.com/img/shanghai.jpg);">
+    {{ theatre.name }}
+    <div id="myGallery" class="theatre-global-back" style="visibility: hidden; text-align: center; width: 100%;">
+      <a ng-href="{{ video.href }}" ng-repeat="video in video_list" ><img ng-src="{{ video.thumbnail }}" style="height: 1px;"/></a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

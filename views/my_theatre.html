@@ -1,25 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<script src="../jquery.min.js" type="text/javascript" ></script>
-<link type="text/css" rel="stylesheet" href="./theatre.css" />
-<link type="text/css" rel="stylesheet" href="./my_theatre.css" />
-<link type="text/css" rel="stylesheet" href="./normalize.css" />
-<script type="text/javascript" src="./jquery.theatre.min.js"></script>
-<script type="text/javascript" src="./my_theatre.js"></script>
-<script type="text/javascript" src="./angular.js"></script>
-<script type="text/javascript" src="./my_theatre_data.js"></script>
-</head>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    <title>Chrome Theatre</title>
 
-<body ng-app="TheatreApp">
-<div ng-controller="TheatrePresentCtrl">
-  <div class="theatre-global-back" style="background-image:url(http://www.hackshanghai.com/img/shanghai.jpg);">
-    {{ theatre.name }}
-    <div id="myGallery" class="theatre-global-back" style="visibility: hidden; text-align: center; width: 100%;">
-      <img ng-src="{{ video.thumbnail }}" ng-repeat="video in video_list" style="height: 1px;"/>
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+  </head>
+	<body>
+		<div class="reveal" ng-app="TheatreApp">
+      <h1 align="center">Chrome Theatre</h1>
+      <button id="next-button" align="center">bug</button>
+			<div class="slides" id="myTheatre" ng-controller="TheatrePresentCtrl">
+        <section ng-repeat="video in video_list">
+          <a href="{{ video.href }}">
+          </a>
+          <img ng-src="{{ video.thumbnail }}">
+          <h3>
+          {{ video.title }}
+          </h3>
+        </section>
+        <section>
+        </section>
+      </div>
     </div>
-  </div>
-</div>
-</body>
+
+		<script src="../jquery.min.js"></script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script src="angular.js"></script>
+		<script src="my_theatre.js"></script>
+		<script src="my_theatre_data.js"></script>
+	</body>
 </html>
