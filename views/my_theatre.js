@@ -2,10 +2,14 @@ var isForeground = true;
 
 $(window).bind("blur", function() {
   isForeground = false;
+  	console.log('blur:isForeground',isForeground);
+
 });
 
 $(window).bind("focus", function() {
   isForeground = true;
+  	console.log('focus:isForeground',isForeground);
+
 });
 
 $(window).load(function() {
@@ -40,7 +44,6 @@ $(window).load(function() {
 
 	port.onMessage.addListener(function(msg) {
 		console.log(msg,isForeground);
-		if(!isForeground)return;
 		console.log(msg);
         if(msg.type == "accept") {
             console.log(msg.data);
@@ -53,7 +56,8 @@ $(window).load(function() {
             });
         }
         else {
-            directions(Number(msg.id));
+        	if(isForeground)
+            	directions(Number(msg.id));
         }
 	});
 
