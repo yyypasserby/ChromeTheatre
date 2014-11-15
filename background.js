@@ -23,6 +23,7 @@ var client = {
 	}
 }
 
+var video_list_str;
 chrome.extension.onConnect.addListener(function(port) {
 	console.log('port name : ' + port.name);
 	console.assert(port.name == "backgroud");
@@ -32,17 +33,26 @@ chrome.extension.onConnect.addListener(function(port) {
 			var clientId = port.portId_;
 
 			console.log('port : a new client ' + clientId);
-			port.postMessage({type:'accept', name: 'server_accept', data: {id: clientId}});
+            console.log(video_list_str);
+			port.postMessage({type:'accept', data: video_list_str});
 
 			client.ports[clientId] = port;
 			console.log(client.ports);
-		}
 
+		}
+        console.log(msg);
+        if(msg.type == 'video_new') {
+            console.log(msg.data);
+            chrome.tabs.create({
+                url: msg.data
+            });
+        }
 		if(msg.type == 'youku'){
 			console.log(msg);
 			chrome.tabs.create({
-				url:chrome.extension.getURL("views/my_theatre.html#" + msg.data)
+				url:chrome.extension.getURL("views/my_theatre.html")
 			});
+            video_list_str = msg.data;
 		}
 	});
 	port.onDisconnect.addListener(function(){
