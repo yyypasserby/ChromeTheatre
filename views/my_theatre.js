@@ -11,7 +11,16 @@ $(window).load(function() {
 
     port.postMessage({type: "new"});
 
+    /*
+
+	public enum Motions {
+		Dummy, Down, Up, Left, Right, SingleTap, DoubleTap, LongPress
+	}
+
+	msg Object example: {"id":"0","dscp":"Dummy"}
+    */
 	port.onMessage.addListener(function(msg) {
+		console.log(msg);
 	});
 });
 

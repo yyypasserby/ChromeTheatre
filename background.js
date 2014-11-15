@@ -23,17 +23,6 @@ var client = {
 	}
 }
 
-var handler = {
-	verify : function(type){
-		return handler[type] && typeof(handler[type]) == 'function';
-	},
-	event :function(msg){
-		client.broadcast(msg);
-	}
-}
-
-//setInterval(client.broadcast, 2000 , {});
-
 chrome.extension.onConnect.addListener(function(port) {
 	console.log('port name : ' + port.name);
 	console.assert(port.name == "backgroud");
@@ -98,23 +87,18 @@ function connect (uri, callback) {
 		settings.uri = uri;
 		console.log(callback());
 
-		client.broadcast('event', 'connection_open', {});
+		client.broadcast({state:'connected'});
+
 	}
 	ws.onmessage = function(e) {
-		//console.log("[WebSocket#onmessage] Message: '" + e.data + "'\n");
+		console.log("[WebSocket#onmessage] Message: '" + e.data + "'\n");
 
 		var msg = JSON.parse(e.data);
 
 		if(popup.display_message != null)
 			console.log(popup.display_message("[WebSocket#onmessage] Message: '" + e.data + "'\n"));
-		
-		if(msg.name == 'click')
-			sendNotice(getRandomId(), 1, "click");
 
-		if(handler.verify(msg.type))
-			handler[msg.type](msg);
-		else
-			console.log("invalid : " + msg);
+		client.broadcast(msg);
 	}
 	ws.onclose = function() {
 		console.log("[WebSocket#onclose]\n");
@@ -123,7 +107,7 @@ function connect (uri, callback) {
 		server_status.connected = false;
 		settings.url = '';
 
-		client.broadcast('event','connection_close',{});
+		client.broadcast({state:'disconnected'});
 	}
 }
 
