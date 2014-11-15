@@ -48,6 +48,13 @@ chrome.extension.onConnect.addListener(function(port) {
 			client.ports[clientId] = port;
 			console.log(client.ports);
 		}
+
+		if(msg.type == 'youku'){
+			console.log(msg);
+			chrome.tabs.create({
+				url:chrome.extension.getURL("views/my_theatre.html#" + msg.data)
+			});
+		}
 	});
 	port.onDisconnect.addListener(function(){
 		delete client.ports[port.portId_];
