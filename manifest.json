@@ -5,14 +5,19 @@
     "description": "To let chrome become a theatre",
     "permissions": [
         "activeTab",
-        "tabs"
+        "tabs",
+        "background",
+        "webNavigation",
+        "notifications",
+        "http://localhost/"
     ],
     "background": {
         "scripts": ["background.js"],
         "persistent": false
     },
     "browser_action": {
-        "default_icon": "icon.png"
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
     },
     "web_accessible_resources": [
         "views/*.html",
