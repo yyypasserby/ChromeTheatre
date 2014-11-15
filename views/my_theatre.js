@@ -1,4 +1,4 @@
-var isForeground = false;
+var isForeground = true;
 
 $(window).bind("blur", function() {
   isForeground = false;
@@ -39,6 +39,7 @@ $(window).load(function() {
     }
 
 	port.onMessage.addListener(function(msg) {
+		console.log(msg,isForeground);
 		if(!isForeground)return;
 		console.log(msg);
         if(msg.type == "accept") {
