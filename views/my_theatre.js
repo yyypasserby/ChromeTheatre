@@ -19,8 +19,23 @@ $(window).load(function() {
 
 	msg Object example: {"id":"0","dscp":"Dummy"}
     */
+    function directions(msg) {
+        if(msg == 3) {
+            $('#myGallery').theatre('next');
+        }
+        if(msg == 4) {
+            $('#myGallery').theatre('prev');
+        }
+    }
+
 	port.onMessage.addListener(function(msg) {
 		console.log(msg);
+        var direction = JSON.parse(msg);
+        directions(Number(msg.id));
 	});
+
+    $("#next-button").on("click",function() {
+        directions(4);
+    });
 });
 
