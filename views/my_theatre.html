@@ -15,16 +15,15 @@
   </head>
 	<body>
 		<div class="reveal" ng-app="TheatreApp">
-      <h1 align="center">Chrome Theatre</h1>
-      <button id="next-button" align="center">bug</button>
+      <h1 align="center" style="margin-top:30px">Chrome Theatre</h1>
 			<div class="slides" id="myTheatre" ng-controller="TheatrePresentCtrl">
         <section ng-repeat="video in video_list">
-          <a href="{{ video.href }}">
-          </a>
-          <img ng-src="{{ video.thumbnail }}">
-          <h3>
-          {{ video.title }}
-          </h3>
+            <a class="media-left" href="{{ video.href }}">
+            </a>
+            <img style="height:400px;" ng-src="{{ video.thumbnail }}" alt="{{ video.href }}">
+            <h5>
+              {{ video.title }}
+            </h5>
         </section>
         <section>
         </section>

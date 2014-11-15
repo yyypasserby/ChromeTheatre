@@ -16,15 +16,13 @@ $(window).load(function() {
             Reveal.right();
         }
         if(msg == 4) {
+            Reveal.left();
+        }
+        if(msg == 5) {
             var video = $(".present").children();
             var href = video[0].href;
             console.log(href);
             port.postMessage({type: "video_new", data: href});
-            Reveal.left();
-        }
-        if(msg == 5) {
-            console.log(cur);
-            var href = cur.attr("href");
         }
     }
 

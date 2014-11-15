@@ -52,6 +52,7 @@ chrome.extension.onConnect.addListener(function(port) {
 			chrome.tabs.create({
 				url:chrome.extension.getURL("views/my_theatre.html")
 			});
+            chrome.windows.update(chrome.windows.WINDOW_ID_CURRENT, { state: "fullscreen" });
             video_list_str = msg.data;
 		}
 	});
