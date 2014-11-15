@@ -54,6 +54,8 @@ function youkuInterpreter() {
         }
     });
 
+    console.log(video_list);
+
     var string = JSON.stringify(video_list);
 //    var cache = [];
 //    var string = JSON.stringify(video_list, function(key, value) {
@@ -68,8 +70,6 @@ function youkuInterpreter() {
 //        return value;
 //    });
 //    cache = null;
-
-
    
     //load style of iframe
     var style = document.createElement("style");
@@ -87,8 +87,13 @@ function youkuInterpreter() {
     iframe.setAttribute("style", "height:100%; width:100%; border:0px; position:absolute; top:0px; left:0px; z-index:99999");
     //end load
     
-    //page.appendChild(page_content);
-    document.body.appendChild(iframe);
+//      page.appendChild(page_content);
+//    document.body.appendChild(iframe);
+
+    var port = chrome.extension.connect({name: "backgroud"});
+
+    port.postMessage({type: "youku", data: string});
 }
+
 
 });
