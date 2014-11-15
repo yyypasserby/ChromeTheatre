@@ -23,18 +23,15 @@ app.controller('TheatrePresentCtrl', ['$scope', function($scope) {
 //         console.log(allKeys);
 //    });
     
-    console.log(window.location.hash);
     var temp = window.location.hash;
     var video_list_str = temp.substr(1, temp.length - 1);
     var video_list = JSON.parse(video_list_str);
+
+    var length = video_list.length;
+    video_list.splice(10, length - 10);
     console.log(video_list);
 
     $scope.theatre = { name : 'My Theatre' };
-    $scope.video_list = [];
-    $scope.video_list.push({ thumbnail : 'http://www.hackshanghai.com/img/logo-new.png'});
-    $scope.video_list.push({ thumbnail : 'http://www.hackshanghai.com/img/logo-new.png'});
-    $scope.video_list.push({ thumbnail : 'http://www.hackshanghai.com/img/logo-new.png'});
-    $scope.video_list.push({ thumbnail : 'http://www.hackshanghai.com/img/logo-new.png'});
-    $scope.video_list.push({ thumbnail : 'http://www.hackshanghai.com/img/logo-new.png'});
+    $scope.video_list = video_list;
 
 }]);
