@@ -22,8 +22,12 @@
     },
     "content_scripts": [
         {
-        "matches": ["http://*.youku.com/*"],
+        "matches": ["http://*.youku.com/"],
         "js": ["jquery.min.js", "content.js"]
+        },
+        {
+        "matches": ["http://v.youku.com/*"],
+        "js": ["jquery.min.js", "fullscreenPlay.js"]
         }
     ],
     "web_accessible_resources": [
