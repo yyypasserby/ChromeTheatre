@@ -18,7 +18,7 @@ $(window).load(function() {
 	msg Object example: {"id":"0","dscp":"Dummy"}
     */
 	port.onMessage.addListener(function(msg) {
-
+		console.log(msg);
 	});
 });
 

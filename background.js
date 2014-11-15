@@ -86,6 +86,9 @@ function connect (uri, callback) {
 		server_status.connected = true;
 		settings.uri = uri;
 		console.log(callback());
+
+		client.broadcast({state:'connected'});
+
 	}
 	ws.onmessage = function(e) {
 		console.log("[WebSocket#onmessage] Message: '" + e.data + "'\n");
@@ -103,6 +106,8 @@ function connect (uri, callback) {
 		ws = null;
 		server_status.connected = false;
 		settings.url = '';
+
+		client.broadcast({state:'disconnected'});
 	}
 }
 
