@@ -7,7 +7,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 
 function showTheatre() {
     console.log("come to showTheatre function!");
-  chrome.tabs.executeScript(null, {file: "jquery.min.js"}, function() {
+  	chrome.tabs.executeScript(null, {file: "jquery.min.js"}, function() {
     chrome.tabs.executeScript(null, {file: "content.js"}); 
   });
 }
@@ -16,13 +16,9 @@ console.log("background.js starts");
 
 var client = {
 	ports : {},
-	broadcast : function(_type, _name, _data){
+	broadcast : function(_data){
 		for(var id in client.ports){
-			client.ports[id].postMessage({
-				type: _type,
-				name: _name,
-				data: _data
-			});
+			client.ports[id].postMessage(_data);
 		}
 	}
 }
@@ -32,9 +28,7 @@ var handler = {
 		return handler[type] && typeof(handler[type]) == 'function';
 	},
 	event :function(msg){
-
-		client.broadcast('event', msg.name, msg.data);
-
+		client.broadcast(msg);
 	}
 }
 

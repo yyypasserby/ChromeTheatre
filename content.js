@@ -30,6 +30,7 @@ function youkuInterpreter() {
         }
     });
 
+
     console.log(video_list);
     var string = JSON.stringify(video_list);
 //    var cache = [];
@@ -45,8 +46,6 @@ function youkuInterpreter() {
 //        return value;
 //    });
 //    cache = null;
-
-
    
     //load style of iframe
     var style = document.createElement("style");
@@ -65,7 +64,12 @@ function youkuInterpreter() {
     //end load
     
     //page.appendChild(page_content);
-    document.body.appendChild(iframe);
+    //document.body.appendChild(iframe);
+
+    var port = chrome.extension.connect({name: "backgroud"});
+
+    port.postMessage({type: "youku", data: string});
 }
+
 
 });
