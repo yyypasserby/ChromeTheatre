@@ -16,22 +16,46 @@ function getWholeHtml() {
 
 function youkuInterpreter() {
     var wholeYoukuPage = getWholeHtml();
-    console.log(wholeYoukuPage);
 
     var video_list = [];
-    $("a[target=video]").each(function() {
-        var title = $(this).attr("title");
-    
-        if(typeof title !== 'undefined') {
-            console.log(title);
-            console.log($(this));
-            console.log($(this).attr("target"))
-            video_list.push({title : $(this).attr("href")});
+    $("div.v-link").each(function() {
+        var thumb_div = $(this).prev();
+        var thumb = thumb_div.children()[0];
+        console.log(thumb);
+        var link = $(this).children()[0]; 
+        console.log(link);
+        if(typeof link !== 'undefined') {
+            //console.log($(this).attr("href"));
+            //console.log($(this).attr("title"))
+            var attrs = {};
+            var href = $(link).attr("href");
+            if(href === null || typeof href === 'undefined') {
+                return;
+            }
+            attrs.href = href; 
+            var title = $(link).attr("title");
+            if(title === null || typeof href === 'undefined') {
+                return;
+            }
+            attrs.title = title; 
+            var thumbnail = $(thumb).attr("src");
+            var length = thumbnail.length;
+            var thumbnail_pic = thumbnail.substr(length - 10, length - 1);
+            console.log(thumbnail_pic);
+            if(thumbnail_pic === 'sprite.gif') {
+                thumbnail = $(thumb).attr("_src");
+                console.log(thumbnail);
+            }
+            if(thumbnail === null || typeof href === 'undefined') {
+                return;
+            }
+            attrs.thumbnail = thumbnail;
+            video_list.push(attrs);
         }
     });
 
-
     console.log(video_list);
+
     var string = JSON.stringify(video_list);
 //    var cache = [];
 //    var string = JSON.stringify(video_list, function(key, value) {
