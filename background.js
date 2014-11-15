@@ -1,8 +1,8 @@
 chrome.browserAction.onClicked.addListener(function(tab) {
   // No tabs or host permissions needed!
-  chrome.tabs.executeScript(null, {file: "jquery.min.js"}, function() {
-    chrome.tabs.executeScript(null, {file: "content.js"}); 
-  });
+  // chrome.tabs.executeScript(null, {file: "jquery.min.js"}, function() {
+  //   chrome.tabs.executeScript(null, {file: "content.js"}); 
+  // });
 });
 
 function showTheatre() {
@@ -15,7 +15,7 @@ function showTheatre() {
 console.log("background.js starts");
 
 var client = {
-	ports : {},
+	port : {},
 	broadcast : function(_data){
 		for(var id in client.ports){
 			client.ports[id].postMessage(_data);
@@ -61,9 +61,9 @@ var Opt = function (ms) {
 }
 
 var sendNotice = function(id, ttl, ms) {
-	chrome.notifications.create(id, Opt(ms), function (id) {
-	setTimeout(clear,1000*ttl,id);
-});
+		chrome.notifications.create(id, Opt(ms), function (id) {
+		setTimeout(clear,1000*ttl,id);
+	});
 }
 
 var clear = function (id) {

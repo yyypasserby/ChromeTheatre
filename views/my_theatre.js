@@ -1,3 +1,13 @@
+var isForeground = false;
+
+$(window).bind("blur", function() {
+  isForeground = false;
+});
+
+$(window).bind("focus", function() {
+  isForeground = true;
+});
+
 $(window).load(function() {
 	$("#myGallery").theatre({
 		/* other options here */
@@ -29,6 +39,7 @@ $(window).load(function() {
     }
 
 	port.onMessage.addListener(function(msg) {
+		if(!isForeground)return;
 		console.log(msg);
         var direction = JSON.parse(msg);
         directions(Number(msg.id));
@@ -38,4 +49,3 @@ $(window).load(function() {
         directions(4);
     });
 });
-
