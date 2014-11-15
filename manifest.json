@@ -27,12 +27,13 @@
         },
         {
         "matches": ["http://v.youku.com/*"],
-        "js": ["jquery.min.js", "fullscreenPlay.js"]
+        "js": ["jquery.min.js", "runFullScreen.js"]
         }
     ],
     "web_accessible_resources": [
         "views/*.html",
         "views/*.css",
-        "imgs/*"
+        "imgs/*",
+        "fullscreenPlay.js"
     ]
 }
