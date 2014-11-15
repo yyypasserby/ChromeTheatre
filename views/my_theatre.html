@@ -12,9 +12,11 @@
 
 <body ng-app="TheatreApp">
 <div ng-controller="TheatrePresentCtrl">
-  {{ theatre.name }}
-  <div id="myGallery" style="visibility: hidden; text-align: center; width: 100%; height: 300px;">
-    <img ng-src="{{ video.thumbnail }}" ng-repeat="video in video_list" style="height: 1px;"/>
+  <div style="background-image:url(http://www.hackshanghai.com/img/shanghai.jpg);">
+    {{ theatre.name }}
+    <div id="myGallery" style="visibility: hidden; text-align: center; width: 100%; height: 300px;">
+      <img ng-src="{{ video.thumbnail }}" ng-repeat="video in video_list" style="height: 1px;"/>
+    </div>
   </div>
 </div>
 </body>
