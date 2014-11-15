@@ -28,6 +28,11 @@ window.onload = function(){
     }
 
     var bg = chrome.extension.getBackgroundPage();
+        console.log("hehe");
+    while(bg == null) {
+        console.log("hehe");
+        bg = chrome.extension.getBackgroundPage();
+    }
 
 
         bg.popup.display_message = ui.display_message;
@@ -40,10 +45,12 @@ window.onload = function(){
         }
 
         $("#connect").on("click", function(e) {
+            console.log("connect btn clicked");
             bg.connect($("#uri").val(),ui.to_connect_statue);
         });
     
         $("#send").on("click", function(e) {
+            console.log("send btn clicked");
             bg.send($("#message").val());
         });
     
@@ -52,6 +59,7 @@ window.onload = function(){
         });
     
         $('#showTheatre').on("click", function(e) {
+            console.log("Show theatre!");
             bg.showTheatre(); 
         });
 

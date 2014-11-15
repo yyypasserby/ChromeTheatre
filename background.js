@@ -6,6 +6,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 function showTheatre() {
+    console.log("come to showTheatre function!");
   chrome.tabs.executeScript(null, {file: "jquery.min.js"}, function() {
     chrome.tabs.executeScript(null, {file: "content.js"}); 
   });
