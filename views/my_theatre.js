@@ -9,12 +9,16 @@ $(window).load(function() {
 
     port.postMessage({type: "new"});
 
+    /*
+
+	public enum Motions {
+		Dummy, Down, Up, Left, Right, SingleTap, DoubleTap, LongPress
+	}
+
+	msg Object example: {"id":"0","dscp":"Dummy"}
+    */
 	port.onMessage.addListener(function(msg) {
 
-		if(handler.verify(msg.type))
-			handler[msg.type](msg);
-		else
-			console.log("invalid : " + msg);
 	});
 });
 
