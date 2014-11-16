@@ -30,12 +30,12 @@ chrome.extension.onConnect.addListener(function(port) {
 	port.onMessage.addListener(function(msg) {
 		if(msg.type == 'new'){
 
-			var clientId = port.sender.id;
+			var clientId = port.sender.url;
 
-			console.log('port : a new client port' + port);
+			console.log(port);
 
 			console.log('port : a new client id ' + clientId);
-            console.log(video_list_str);
+            // console.log(video_list_str);
 			port.postMessage({type:'accept', data: video_list_str});
 
 			client.ports[clientId] = port;
@@ -60,7 +60,8 @@ chrome.extension.onConnect.addListener(function(port) {
 		}
 	});
 	port.onDisconnect.addListener(function(){
-		delete client.ports[port.sender.id];
+		console.log('port.onDisconnect');
+		delete client.ports[port.sender.url];
 		console.log(client.ports);
 	});
 });
