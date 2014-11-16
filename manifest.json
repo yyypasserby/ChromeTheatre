@@ -22,7 +22,7 @@
     },
     "content_scripts": [
         {
-        "matches": ["http://*.youku.com/"],
+        "matches": ["http://www.youku.com/*"],
         "js": ["jquery.min.js", "content.js"]
         },
         {

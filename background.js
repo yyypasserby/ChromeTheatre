@@ -17,6 +17,11 @@ console.log("background.js starts");
 var client = {
 	ports : {},
 	broadcast : function(_data){
+        if(_data.id == "6") {
+            chrome.tabs.getSelected(null, function(tab) {
+                chrome.tabs.remove(tab.id);
+            });
+        }
 		for(var id in client.ports){
 			client.ports[id].postMessage(_data);
 		}

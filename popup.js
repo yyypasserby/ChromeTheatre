@@ -46,7 +46,7 @@ window.onload = function(){
 
         $("#connect").on("click", function(e) {
             console.log("connect btn clicked");
-            bg.connect($("#uri").val(),ui.to_connect_statue);
+            bg.connect("ws://" + $("#uri").val() + ":3139",ui.to_connect_statue);
         });
     
         $("#send").on("click", function(e) {

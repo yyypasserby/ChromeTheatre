@@ -15,8 +15,11 @@
   </head>
 	<body>
 		<div class="reveal" ng-app="TheatreApp">
-      <h2 align="center" style="margin-top:30px">Chrome Theatre</h2>
+      <h2 align="center" style="margin-top:30px"><img style="margin-right:20px;" src="tv_blue.png">Chrome Theatre</h2>
 			<div class="slides" id="myTheatre" ng-controller="TheatrePresentCtrl">
+        <section>
+          <h3>Touch your phone to START.</h3> 
+        </section>
         <section ng-repeat="video in video_list">
             <a class="media-left" href="{{ video.href }}">
             </a>

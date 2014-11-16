@@ -362,9 +362,10 @@
 					})
 				} else {
 					var t = new T(a);
-					document.body.innerHTML="<video id=\"theatre\" src=\""+t._videoSegsDic["3gphd"][0].src+"\" controls=\"controls\" height=\"100%\" weight=\"100%\">您的浏览器不支持 video 标签。</video>";
+					videosrc = t._videoSegsDic["mp4"][0]!=null ? t._videoSegsDic["mp4"][0].src : t._videoSegsDic["3gphd"][0].src;
+					document.body.innerHTML="<video id=\"theatre\" src=\""+videosrc+"\" controls=\"controls\" height=\"100%\" weight=\"100%\" autoplay=\"autoplay\">您的浏览器不支持 video 标签。</video>";
 					callback({
-						"&#x6807;&#x6E05;": t._videoSegsDic["3gphd"][0].src
+						"&#x6807;&#x6E05;": videosrc
 					})
 				}
 			}, "__callback")

@@ -32,6 +32,9 @@ $(window).load(function() {
         if(msg == 4) {
             Reveal.left();
         }
+        if(msg == 2) {
+            Reveal.toggleOverview();
+        }
         if(msg == 5) {
             var video = $(".present").children();
             var href = video[0].href;
@@ -49,9 +52,7 @@ $(window).load(function() {
             var controller = element.controller();
             var scope = element.scope();
          //as this happends outside of angular you probably have to notify angular of the change by wrapping your function call in $apply
-            scope.$apply(function(){
-                scope.updateVideoList(msg.data);
-            });
+            scope.updateVideoList(msg.data);
         }
         else {
         	if(isForeground)
