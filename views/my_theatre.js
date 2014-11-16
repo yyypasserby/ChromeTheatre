@@ -71,6 +71,7 @@ $(window).load(function() {
         progress: false,
         history: true,
         center: true,
+        loop: true,
 
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none

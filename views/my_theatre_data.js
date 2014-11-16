@@ -37,7 +37,7 @@ app.controller('TheatrePresentCtrl', ['$scope', function($scope) {
         var videos = JSON.parse(data);
         var length = videos.length;
 
-        videos.splice(40, length - 40);
+        videos.splice(19, length - 19);
         $scope.video_list = videos;
         $scope.$apply();
         console.log(data);
